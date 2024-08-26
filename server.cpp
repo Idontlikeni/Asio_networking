@@ -231,15 +231,15 @@ int main(int argc, char* argv[])
     std::setlocale(LC_ALL, "RU");
     try
     {
-        //if (argc != 2)
-        //{
-        //    std::cerr << "Usage: blocking_tcp_echo_server <port>\n";
-        //    return 1;
-        //}
+        if (argc != 2)
+        {
+            std::cerr << "Usage: blocking_tcp_echo_server <port>\n";
+            return 1;
+        }
 
         asio::io_context io_context;
 
-        server(io_context, 8080);
+        server(io_context, std::atoi(argv[1]));
     }
     catch (std::exception& e)
     {
